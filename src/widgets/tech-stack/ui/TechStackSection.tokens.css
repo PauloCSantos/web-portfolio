@@ -1,0 +1,20 @@
+.tech-stack-story {
+  --tech-stack-mobile-stage-min-block-size: clamp(13.5rem, 52vw, 17rem);
+  --tech-stack-mobile-card-padding: clamp(1rem, 4.5vw, 1.35rem);
+  --tech-stack-mobile-card-radius: clamp(0.85rem, 3vw, 1rem);
+  --tech-stack-mobile-chip-min-block-size: clamp(2.15rem, 9vw, 2.5rem);
+  --tech-stack-mobile-chip-padding-inline: clamp(0.68rem, 3vw, 0.9rem);
+  --tech-stack-mobile-chip-font-size: clamp(0.68rem, 2.4vw, 0.76rem);
+  --tech-stack-cloud-padding-block-start: 28px;
+  --tech-stack-cloud-padding-block-end: 52px;
+  --tech-stack-cloud-lane-offset: 20px;
+  --tech-stack-cloud-chip-spacing: 260px;
+  --tech-stack-cloud-overflow: 220px;
+  --tech-stack-cloud-reentry-delay: 0.5;
+  --tech-stack-cloud-speed: 760;
+  position: relative;
+  overflow: visible;
+  min-height: 100svh;
+  isolation: isolate;
+  z-index: 20;
+}

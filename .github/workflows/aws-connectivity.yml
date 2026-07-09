@@ -1,0 +1,124 @@
+name: AWS Connectivity
+
+on:
+  workflow_dispatch:
+    inputs:
+      terraform_init:
+        description: "Run Terraform init against the remote backend"
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: aws-connectivity-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TERRAFORM_VERSION: "1.15.7"
+  TF_IN_AUTOMATION: "true"
+  TF_INPUT: "false"
+  TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+  TF_STATE_KEY: ${{ vars.TF_STATE_KEY }}
+  TF_STATE_REGION: ${{ vars.TF_STATE_REGION }}
+
+jobs:
+  connectivity:
+    name: Validate AWS connectivity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Validate AWS configuration
+        env:
+          AWS_PLAN_ROLE_ARN: ${{ secrets.AWS_PLAN_ROLE_ARN }}
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+          TF_STATE_KEY: ${{ vars.TF_STATE_KEY }}
+          TF_STATE_REGION: ${{ vars.TF_STATE_REGION }}
+        run: |
+          set -euo pipefail
+
+          : "${AWS_PLAN_ROLE_ARN:?Missing GitHub secret AWS_PLAN_ROLE_ARN}"
+          : "${AWS_REGION:?Missing GitHub Actions variable AWS_REGION}"
+          : "${TF_STATE_BUCKET:?Missing GitHub Actions variable TF_STATE_BUCKET}"
+          : "${TF_STATE_KEY:?Missing GitHub Actions variable TF_STATE_KEY}"
+          : "${TF_STATE_REGION:?Missing GitHub Actions variable TF_STATE_REGION}"
+
+          if [[ ! "$AWS_PLAN_ROLE_ARN" =~ ^arn:aws:iam::[0-9]{12}:role/.+ ]]; then
+            echo "AWS_PLAN_ROLE_ARN must be an IAM role ARN like arn:aws:iam::123456789012:role/github-actions-role" >&2
+            exit 1
+          fi
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_PLAN_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          mask-aws-account-id: true
+
+      - name: Verify caller identity
+        run: |
+          set -euo pipefail
+
+          identity="$(aws sts get-caller-identity)"
+          account_id="$(printf "%s" "$identity" | jq -r ".Account")"
+          arn="$(printf "%s" "$identity" | jq -r ".Arn")"
+
+          echo "::add-mask::$account_id"
+          echo "Authenticated with AWS STS."
+          echo "Caller ARN: $arn"
+
+          {
+            echo "## AWS connectivity"
+            echo
+            echo "- STS authentication: ok"
+            echo "- Caller ARN: \`$arn\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify Terraform state bucket
+        run: |
+          set -euo pipefail
+
+          aws s3api head-bucket --bucket "${{ vars.TF_STATE_BUCKET }}"
+          bucket_region="$(aws s3api get-bucket-location \
+            --bucket "${{ vars.TF_STATE_BUCKET }}" \
+            --query "LocationConstraint" \
+            --output text)"
+
+          if [ "$bucket_region" = "None" ]; then
+            bucket_region="us-east-1"
+          fi
+
+          echo "Terraform state bucket is reachable."
+          echo "Bucket region: $bucket_region"
+
+          {
+            echo "- Terraform state bucket: ok"
+            echo "- State bucket region: \`$bucket_region\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Setup Terraform
+        if: ${{ inputs.terraform_init }}
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+      - name: Terraform init remote backend
+        if: ${{ inputs.terraform_init }}
+        run: |
+          terraform -chdir=infra/terraform init -input=false \
+            -backend-config="bucket=${TF_STATE_BUCKET}" \
+            -backend-config="key=${TF_STATE_KEY}" \
+            -backend-config="region=${TF_STATE_REGION}" \
+            -backend-config="encrypt=true" \
+            -backend-config="use_lockfile=true"
+
+          {
+            echo "- Terraform backend init: ok"
+          } >> "$GITHUB_STEP_SUMMARY"

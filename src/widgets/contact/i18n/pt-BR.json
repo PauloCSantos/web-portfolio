@@ -1,0 +1,28 @@
+{
+  "positioning": "Para conversas em que engenharia precisa de arquitetura, entrega e leitura de produto.",
+  "title": "Vamos falar com contexto.",
+  "description": "Se a vaga pede alguém que entenda processo, desenhe arquitetura, implemente software e conecte aplicação, backend e cloud, esta é uma boa conversa.",
+  "qualificationItems": [
+    {
+      "label": "Foco",
+      "description": "Engenharia de software, arquitetura, APIs, cloud, automação, performance e sistemas que precisam sustentar decisão."
+    },
+    {
+      "label": "Leitura",
+      "description": "Trabalho melhor quando há espaço para entender tradeoffs, cortar ruído e transformar requisito solto em direção executável."
+    },
+    {
+      "label": "Ritmo",
+      "description": "Prefiro conversas objetivas: contexto real, restrições claras e próximos passos que respeitam o tempo de quem avalia."
+    }
+  ],
+  "panelTitle": "Canais diretos",
+  "panelDescription": "Use o canal que fizer mais sentido para avaliar fit técnico, histórico de entrega ou uma oportunidade específica.",
+  "ctaGroupLabel": "Ações de contato",
+  "opensInNewTab": "abre em nova aba",
+  "linkedin": "LinkedIn",
+  "linkedinDescription": "Melhor para iniciar uma conversa com contexto profissional.",
+  "github": "GitHub",
+  "githubDescription": "Código, decisões técnicas e sinais de execução.",
+  "resumeDescription": "Para triagem rápida, baixe o currículo no idioma ativo."
+}

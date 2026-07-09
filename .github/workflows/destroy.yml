@@ -1,0 +1,153 @@
+name: Destroy
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type destroy web-portfolio prod to confirm"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: prod-destroy
+  cancel-in-progress: false
+
+env:
+  TERRAFORM_VERSION: "1.15.7"
+  TF_IN_AUTOMATION: "true"
+  TF_INPUT: "false"
+  TF_VAR_environment: prod
+  TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+  TF_STATE_KEY: ${{ vars.TF_STATE_KEY }}
+  TF_STATE_REGION: ${{ vars.TF_STATE_REGION }}
+
+jobs:
+  destroy:
+    name: Terraform destroy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Authorize owner
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.actor }}" != "PauloCSantos" ]; then
+            echo "Only the repository owner can run this workflow." >&2
+            exit 1
+          fi
+
+          if [ "${{ inputs.confirm }}" != "destroy web-portfolio prod" ]; then
+            echo "Confirmation text does not match." >&2
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+      - name: Validate destroy configuration
+        env:
+          AWS_DEPLOY_ROLE_ARN: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+          TF_STATE_KEY: ${{ vars.TF_STATE_KEY }}
+          TF_STATE_REGION: ${{ vars.TF_STATE_REGION }}
+          TF_VAR_PROJECT_NAME: ${{ vars.TF_VAR_PROJECT_NAME }}
+        run: |
+          set -euo pipefail
+
+          : "${AWS_DEPLOY_ROLE_ARN:?Missing GitHub secret AWS_DEPLOY_ROLE_ARN}"
+          : "${AWS_REGION:?Missing GitHub Actions variable AWS_REGION}"
+          : "${TF_STATE_BUCKET:?Missing GitHub Actions variable TF_STATE_BUCKET}"
+          : "${TF_STATE_KEY:?Missing GitHub Actions variable TF_STATE_KEY}"
+          : "${TF_STATE_REGION:?Missing GitHub Actions variable TF_STATE_REGION}"
+          : "${TF_VAR_PROJECT_NAME:?Missing GitHub Actions variable TF_VAR_PROJECT_NAME}"
+
+          if [[ ! "$AWS_DEPLOY_ROLE_ARN" =~ ^arn:aws:iam::[0-9]{12}:role/.+ ]]; then
+            echo "AWS_DEPLOY_ROLE_ARN must be an IAM role ARN like arn:aws:iam::123456789012:role/github-actions-role" >&2
+            exit 1
+          fi
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          mask-aws-account-id: true
+
+      - name: Terraform init
+        run: |
+          terraform -chdir=infra/terraform init -input=false \
+            -backend-config="bucket=${TF_STATE_BUCKET}" \
+            -backend-config="key=${TF_STATE_KEY}" \
+            -backend-config="region=${TF_STATE_REGION}" \
+            -backend-config="encrypt=true" \
+            -backend-config="use_lockfile=true"
+
+      - name: Empty versioned site bucket
+        env:
+          TF_VAR_project_name: ${{ vars.TF_VAR_PROJECT_NAME }}
+          TF_VAR_aws_region: ${{ vars.AWS_REGION }}
+          TF_VAR_site_bucket_name: ${{ vars.TF_VAR_SITE_BUCKET_NAME }}
+          TF_VAR_enable_custom_domain: ${{ vars.TF_VAR_ENABLE_CUSTOM_DOMAIN || 'false' }}
+          TF_VAR_domain_name: ${{ vars.TF_VAR_DOMAIN_NAME }}
+          TF_VAR_enable_www_redirect: ${{ vars.TF_VAR_ENABLE_WWW_REDIRECT || 'true' }}
+          TF_VAR_hosted_zone_id: ${{ vars.TF_VAR_HOSTED_ZONE_ID }}
+          TF_VAR_create_acm_certificate: ${{ vars.TF_VAR_CREATE_ACM_CERTIFICATE || 'false' }}
+          TF_VAR_acm_certificate_arn: ${{ secrets.TF_VAR_ACM_CERTIFICATE_ARN }}
+        run: |
+          set -euo pipefail
+
+          if ! bucket_name="$(terraform -chdir=infra/terraform output -raw s3_bucket_name 2>/dev/null)"; then
+            echo "No site bucket output found in Terraform state. Skipping bucket cleanup."
+            exit 0
+          fi
+
+          if [ -z "$bucket_name" ]; then
+            echo "Site bucket output is empty. Skipping bucket cleanup."
+            exit 0
+          fi
+
+          echo "Emptying versioned site bucket before destroy: $bucket_name"
+
+          while true; do
+            aws s3api list-object-versions --bucket "$bucket_name" --output json > object-versions.json
+            jq -c '[.Versions[]?, .DeleteMarkers[]? | {Key: .Key, VersionId: .VersionId}]' object-versions.json > objects-to-delete.json
+
+            if [ "$(jq length objects-to-delete.json)" -eq 0 ]; then
+              break
+            fi
+
+            jq -n --slurpfile objects objects-to-delete.json '{Objects: $objects[0], Quiet: true}' > delete-objects.json
+            aws s3api delete-objects --bucket "$bucket_name" --delete file://delete-objects.json >/dev/null
+          done
+
+      - name: Terraform destroy
+        env:
+          TF_VAR_project_name: ${{ vars.TF_VAR_PROJECT_NAME }}
+          TF_VAR_aws_region: ${{ vars.AWS_REGION }}
+          TF_VAR_site_bucket_name: ${{ vars.TF_VAR_SITE_BUCKET_NAME }}
+          TF_VAR_enable_custom_domain: ${{ vars.TF_VAR_ENABLE_CUSTOM_DOMAIN || 'false' }}
+          TF_VAR_domain_name: ${{ vars.TF_VAR_DOMAIN_NAME }}
+          TF_VAR_enable_www_redirect: ${{ vars.TF_VAR_ENABLE_WWW_REDIRECT || 'true' }}
+          TF_VAR_hosted_zone_id: ${{ vars.TF_VAR_HOSTED_ZONE_ID }}
+          TF_VAR_create_acm_certificate: ${{ vars.TF_VAR_CREATE_ACM_CERTIFICATE || 'false' }}
+          TF_VAR_acm_certificate_arn: ${{ secrets.TF_VAR_ACM_CERTIFICATE_ARN }}
+        run: terraform -chdir=infra/terraform destroy -input=false -auto-approve
+
+      - name: Summarize destroy
+        run: |
+          {
+            echo "## Terraform destroy"
+            echo
+            echo "Production infrastructure destroy completed."
+          } >> "$GITHUB_STEP_SUMMARY"

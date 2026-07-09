@@ -1,0 +1,57 @@
+{
+  "title": "Experiência",
+  "description": "Um registro de decisões técnicas tomadas em produção, com impacto mensurável e atenção às restrições reais do produto.",
+  "timelineLabel": "Registro de decisões e impacto profissional",
+  "decisionLabel": "Decisão",
+  "impactLabel": "Impacto",
+  "evidenceLabel": "Evidências",
+  "stackLabel": "Ambiente técnico",
+  "currentSignal": "Trabalho atual",
+  "items": [
+    {
+      "id": "rede-dor-software-engineer-2025",
+      "company": "Rede D'or São Luiz",
+      "role": "Engenheiro de Software",
+      "period": "Set 2025 – Atual",
+      "context": "Fluxo operacional antes manual, com custo de execução alto e necessidade de controle sobre entrega, infraestrutura e evolução.",
+      "decision": "Tratar a automação como produto interno completo: aplicação em React, APIs serverless e infraestrutura versionada desde o início.",
+      "impact": "Redução de esforço operacional e do tempo total de execução, com uma base técnica preparada para manutenção e auditoria.",
+      "evidence": [
+        "Aplicação web responsiva orientada ao uso recorrente da operação.",
+        "Backend em AWS Lambda com Python para expor APIs seguras do fluxo.",
+        "Terraform e Azure DevOps usados para entrega controlada e rastreável."
+      ],
+      "stack": ["React", "AWS Lambda", "Python", "Terraform", "Azure DevOps"]
+    },
+    {
+      "id": "l5-networks-software-developer-2024",
+      "company": "L5 Networks",
+      "role": "Desenvolvedor de Software",
+      "period": "Abr 2024 – Ago 2025",
+      "context": "CRM multi-tenant em produção, sustentado por legado ativo e usado por múltiplos clientes sem margem para reescrita ampla.",
+      "decision": "Atacar gargalos por evidência: medir consultas, refatorar módulos críticos e preservar compatibilidade onde ela protegia o negócio.",
+      "impact": "Carregamento reduzido de 82 segundos para menos de 2 segundos em produção, sem romper o ecossistema existente.",
+      "evidence": [
+        "Uso de EXPLAIN para diagnosticar consultas SQL críticas.",
+        "Refatoração incremental em módulos de alto tráfego.",
+        "Entregas com CodeIgniter, jQuery e Bootstrap alinhadas às restrições do legado."
+      ],
+      "stack": ["PHP", "CodeIgniter", "SQL", "jQuery", "Bootstrap"]
+    },
+    {
+      "id": "guian-assist-software-developer-2023",
+      "company": "Guiân Assist",
+      "role": "Desenvolvedor de Software",
+      "period": "Jan 2023 – Jul 2023",
+      "context": "Operação dependente de coleta automatizada e geração de arquivos, com processos internos lentos para o ritmo de decisão.",
+      "decision": "Separar o que precisava acelerar agora do que precisava preparar arquitetura: otimização direta no legado e protótipo cloud-native em paralelo.",
+      "impact": "Geração de arquivos saiu de minutos para segundos, enquanto a próxima evolução ganhou um desenho orientado a escala e mensageria.",
+      "evidence": [
+        "Sistema em produção para coleta via web scraping apoiando decisões de contratação.",
+        "Troca de HTML por CSV para reduzir tempo de processamento.",
+        "Protótipo cloud-native com arquitetura escalável e mensageria."
+      ],
+      "stack": ["PHP", "Web scraping", "CSV", "Cloud-native", "Mensageria"]
+    }
+  ]
+}

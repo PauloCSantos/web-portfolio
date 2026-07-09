@@ -1,0 +1,390 @@
+.tech-stack-mobile-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--tech-stack-mobile-card-radius);
+  border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 72%, transparent),
+      color-mix(in srgb, var(--color-card) 42%, transparent)
+    ),
+    color-mix(in srgb, var(--color-card) 70%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-border) 24%, transparent);
+}
+
+.tech-stack-mobile-shell {
+  position: relative;
+  min-height: 100svh;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 92%, transparent),
+      color-mix(in srgb, var(--color-card) 78%, transparent)
+    ),
+    color-mix(in srgb, var(--color-card) 72%, transparent);
+}
+
+.tech-stack-mobile-shell-backdrop {
+  background:
+    radial-gradient(
+      circle at 18% 16%,
+      color-mix(in srgb, var(--color-primary) 14%, transparent),
+      transparent 44%
+    ),
+    radial-gradient(
+      circle at 82% 24%,
+      color-mix(in srgb, #5b6f86 10%, transparent),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 88%, transparent),
+      transparent 78%
+    );
+  opacity: 0.9;
+}
+
+.tech-stack-mobile-scene,
+.tech-stack-mobile-cloud,
+.tech-stack-mobile-chip-cloud {
+  min-height: var(--tech-stack-mobile-stage-min-block-size);
+}
+
+.tech-stack-mobile-cloud {
+  position: relative;
+  contain: layout;
+}
+
+.tech-stack-mobile-cloud-copy {
+  position: absolute;
+  inset: clamp(0.75rem, 3vw, 0.95rem) clamp(0.75rem, 3vw, 0.95rem) auto;
+  z-index: 2;
+  display: grid;
+  gap: 0.35rem;
+  max-inline-size: min(78%, 20rem);
+}
+
+.tech-stack-mobile-cloud-eyebrow {
+  font-size: clamp(0.62rem, 2.2vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-fg) 62%, transparent);
+}
+
+.tech-stack-mobile-cloud-caption {
+  font-size: clamp(0.72rem, 2.5vw, 0.8rem);
+  line-height: 1.3;
+  color: color-mix(in srgb, var(--color-fg) 54%, transparent);
+}
+
+.tech-stack-mobile-chip-cloud {
+  position: relative;
+}
+
+.tech-stack-mobile-chip-node {
+  position: absolute;
+  left: var(--mobile-chip-x);
+  top: var(--mobile-chip-y);
+  transform: translate(-50%, -50%) rotate(var(--mobile-chip-rotate))
+    scale(var(--mobile-chip-scale));
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease,
+    border-color 220ms ease;
+}
+
+.tech-stack-mobile-chip-node[data-active="true"] .tech-stack-mobile-chip-pill {
+  border-color: color-mix(in srgb, var(--color-primary) 48%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 94%, transparent);
+  box-shadow: 0 10px 24px -20px color-mix(in srgb, var(--color-primary) 24%, transparent);
+}
+
+.tech-stack-mobile-chip-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: fit-content;
+  min-block-size: var(--tech-stack-mobile-chip-min-block-size);
+  white-space: nowrap;
+  overflow-wrap: normal;
+  text-align: center;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  padding: 0.58rem var(--tech-stack-mobile-chip-padding-inline);
+  font-size: var(--tech-stack-mobile-chip-font-size);
+  font-weight: 600;
+  line-height: 1.18;
+  color: var(--color-fg);
+}
+
+.tech-stack-mobile-features {
+  position: relative;
+}
+
+.tech-stack-node {
+  contain: layout style;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.tech-stack-chip {
+  transform: translate3d(-50%, -50%, 0);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.tech-stack-chip-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: fit-content;
+  min-block-size: clamp(2.2rem, 2.5vw, 2.5rem);
+  white-space: nowrap;
+  overflow-wrap: normal;
+  text-align: center;
+  line-height: 1.2;
+  backface-visibility: hidden;
+  transform-origin: center;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-border) 35%, transparent);
+  transition:
+    background-color 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.tech-stack-node[data-chip-visual="hidden"] .tech-stack-chip-pill {
+  border-color: color-mix(in srgb, var(--color-border) 50%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  box-shadow: none;
+}
+
+.tech-stack-node[data-chip-visual="orbit"] .tech-stack-chip-pill {
+  border-color: color-mix(in srgb, var(--color-border) 72%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-border) 35%, transparent);
+}
+
+.tech-stack-node[data-chip-visual="stack"] .tech-stack-chip-pill {
+  border-color: color-mix(in srgb, var(--color-primary) 64%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 96%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary) 28%, transparent);
+}
+
+.tech-stack-mobile-carousel {
+  display: grid;
+  gap: clamp(0.8rem, 3vw, 1rem);
+}
+
+.tech-stack-mobile-carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tech-stack-mobile-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.tech-stack-mobile-slide {
+  scroll-snap-align: center;
+  min-width: 0;
+}
+
+.tech-stack-mobile-panel,
+.tech-stack-mobile-card {
+  position: relative;
+  min-height: clamp(11.5rem, 42vw, 13.25rem);
+  padding: var(--tech-stack-mobile-card-padding);
+  border-radius: var(--tech-stack-mobile-card-radius);
+  border: 1px solid color-mix(in srgb, var(--color-border) 68%, transparent);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg) 84%, transparent),
+      color-mix(in srgb, var(--color-card) 64%, transparent)
+    ),
+    color-mix(in srgb, var(--color-card) 78%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-border) 16%, transparent);
+  content-visibility: auto;
+  contain-intrinsic-size: 200px;
+}
+
+.tech-stack-mobile-panel::before,
+.tech-stack-mobile-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, white 8%, transparent), transparent 42%),
+    radial-gradient(
+      circle at 85% 18%,
+      color-mix(in srgb, var(--color-primary) 10%, transparent),
+      transparent 42%
+    );
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.tech-stack-mobile-panel-intro,
+.tech-stack-mobile-panel-outro {
+  display: grid;
+  gap: clamp(0.75rem, 3vw, 0.95rem);
+  align-content: start;
+}
+
+.tech-stack-mobile-eyebrow {
+  font-size: clamp(0.62rem, 2.2vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-fg) 58%, transparent);
+}
+
+.tech-stack-mobile-summary {
+  max-width: 34ch;
+  font-size: clamp(0.78rem, 2.5vw, 0.86rem);
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--color-fg) 74%, transparent);
+  text-wrap: pretty;
+}
+
+.tech-stack-mobile-title,
+.tech-stack-mobile-card-title {
+  font-size: clamp(1.35rem, 5.5vw, 2.15rem);
+  line-height: 1.04;
+  letter-spacing: 0;
+  color: var(--color-fg);
+  text-wrap: balance;
+}
+
+.tech-stack-mobile-body,
+.tech-stack-mobile-card-body {
+  max-width: 32ch;
+  font-size: clamp(0.9rem, 2.8vw, 0.97rem);
+  line-height: 1.68;
+  color: color-mix(in srgb, var(--color-fg) 78%, transparent);
+}
+
+.tech-stack-mobile-meta {
+  font-size: clamp(0.78rem, 2.5vw, 0.85rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-fg) 56%, transparent);
+}
+
+.tech-stack-mobile-card {
+  display: grid;
+  gap: clamp(0.8rem, 3vw, 1rem);
+}
+
+.tech-stack-mobile-evidence-list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-stack-mobile-evidence-list li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-bg) 76%, transparent);
+  padding: 0.42rem 0.68rem;
+  font-size: clamp(0.72rem, 2.35vw, 0.8rem);
+  font-weight: 650;
+  line-height: 1.1;
+  color: var(--color-fg);
+}
+
+.tech-stack-mobile-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(2.2rem, 8.5vw, 2.5rem);
+  height: clamp(2.2rem, 8.5vw, 2.5rem);
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: color-mix(in srgb, var(--color-fg) 72%, transparent);
+}
+
+.tech-stack-mobile-dots {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.45rem, 2vw, 0.6rem);
+}
+
+.tech-stack-mobile-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-border) 88%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-border) 30%, transparent);
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    width 220ms ease;
+}
+
+.tech-stack-mobile-dot.is-active {
+  width: 2rem;
+  background: color-mix(in srgb, var(--color-primary) 82%, transparent);
+  transform: scaleY(1.04);
+}
+
+.tech-stack-mobile-dot:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 72%, transparent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .tech-stack-story {
+    min-height: auto;
+  }
+
+  .tech-stack-mobile-shell {
+    min-height: auto;
+  }
+
+  .tech-stack-mobile-hero {
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-border) 22%, transparent);
+  }
+}
+
+@media (max-width: 374px) {
+  .tech-stack-story {
+    --tech-stack-mobile-stage-min-block-size: clamp(13rem, 66vw, 15rem);
+  }
+
+  .tech-stack-mobile-cloud-copy {
+    max-inline-size: 70%;
+  }
+
+  .tech-stack-mobile-chip-node {
+    transform: translate(-50%, -50%) rotate(var(--mobile-chip-rotate))
+      scale(calc(var(--mobile-chip-scale) * 0.9));
+  }
+}

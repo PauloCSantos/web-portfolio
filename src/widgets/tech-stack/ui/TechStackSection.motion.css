@@ -1,0 +1,15 @@
+@media (prefers-reduced-motion: reduce) {
+  .tech-stack-parallax-media,
+  .tech-stack-content-layer,
+  .tech-stack-foreground,
+  .tech-stack-copy,
+  .tech-stack-media-frame,
+  .tech-stack-story-pin-dot,
+  .tech-stack-node {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}

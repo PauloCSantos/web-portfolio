@@ -1,0 +1,57 @@
+{
+  "title": "Experience",
+  "description": "A record of technical decisions made in production, with measurable impact and attention to real product constraints.",
+  "timelineLabel": "Professional decision and impact record",
+  "decisionLabel": "Decision",
+  "impactLabel": "Impact",
+  "evidenceLabel": "Evidence",
+  "stackLabel": "Technical environment",
+  "currentSignal": "Current work",
+  "items": [
+    {
+      "id": "rede-dor-software-engineer-2025",
+      "company": "Rede D'or São Luiz",
+      "role": "Software Engineer",
+      "period": "Sep 2025 – Present",
+      "context": "A manual operational flow with high execution cost and a need for control across delivery, infrastructure, and evolution.",
+      "decision": "Treat the automation as a complete internal product: React application, serverless APIs, and versioned infrastructure from the beginning.",
+      "impact": "Reduced operational effort and total execution time, with a technical base ready for maintenance and auditability.",
+      "evidence": [
+        "Responsive web application shaped around repeated operational use.",
+        "AWS Lambda backend with Python exposing secure flow APIs.",
+        "Terraform and Azure DevOps used for controlled, traceable delivery."
+      ],
+      "stack": ["React", "AWS Lambda", "Python", "Terraform", "Azure DevOps"]
+    },
+    {
+      "id": "l5-networks-software-developer-2024",
+      "company": "L5 Networks",
+      "role": "Software Developer",
+      "period": "Apr 2024 – Aug 2025",
+      "context": "A production multi-tenant CRM, sustained by active legacy code and used by multiple clients without room for a broad rewrite.",
+      "decision": "Attack bottlenecks through evidence: measure queries, refactor critical modules, and preserve compatibility where it protected the business.",
+      "impact": "Reduced loading time from 82 seconds to under 2 seconds in production without breaking the existing ecosystem.",
+      "evidence": [
+        "Used EXPLAIN to diagnose critical SQL queries.",
+        "Refactored high-traffic modules incrementally.",
+        "Delivered with CodeIgniter, jQuery, and Bootstrap within legacy constraints."
+      ],
+      "stack": ["PHP", "CodeIgniter", "SQL", "jQuery", "Bootstrap"]
+    },
+    {
+      "id": "guian-assist-software-developer-2023",
+      "company": "Guiân Assist",
+      "role": "Software Developer",
+      "period": "Jan 2023 – Jul 2023",
+      "context": "An operation dependent on automated collection and file generation, with internal processes too slow for the pace of decision making.",
+      "decision": "Separate what had to accelerate now from what had to prepare the architecture: direct legacy optimization and a cloud-native prototype in parallel.",
+      "impact": "File generation moved from minutes to seconds while the next evolution gained a design oriented around scale and messaging.",
+      "evidence": [
+        "Production system for web scraping collection supporting hiring decisions.",
+        "Replaced HTML with CSV to reduce processing time.",
+        "Cloud-native prototype with scalable architecture and messaging."
+      ],
+      "stack": ["PHP", "Web scraping", "CSV", "Cloud-native", "Messaging"]
+    }
+  ]
+}

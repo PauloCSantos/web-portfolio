@@ -1,0 +1,49 @@
+{
+  "title": "About me",
+  "description": "I’m a software engineer focused on turning operational problems into useful systems. I work from process understanding to implementation, connecting application code, backend, cloud, integrations, and automation to reduce manual effort and improve delivery.\n\nI have experience with web applications, APIs, services, infrastructure, integrations, and performance optimization in real systems. I work with attention to architecture, evolutionary maintenance, and technical clarity, aiming for solutions that are simple to operate, measure, and evolve.",
+  "thesis": {
+    "label": "position",
+    "statement": "I design software as the operating system of the business, from rule to delivery.",
+    "detail": "The solution should reveal technical judgment: clear contracts, measurable flow, observable performance, and an operation that does not rely on improvisation."
+  },
+  "highlights": {
+    "integration": {
+      "title": "Integrations",
+      "description": "I connect systems, APIs, and data flows with clear contracts, reducing manual work and failures between teams and platforms."
+    },
+    "performance": {
+      "title": "Performance",
+      "description": "I investigate bottlenecks in applications and databases, using practical analysis to reduce response time and operational cost."
+    },
+    "impact": {
+      "title": "Fast impact",
+      "description": "I understand existing processes, prioritize points of friction, and deliver incremental improvements with a clear operational effect."
+    },
+    "signalLabel": "signal",
+    "ariaLabel": "Highlights"
+  },
+  "stack": {
+    "label": "technical field",
+    "title": "From flow to delivery",
+    "frontend": {
+      "title": "Web applications",
+      "description": "React flows connected to rules, APIs, and real operational use.",
+      "skills": ["JavaScript", "TypeScript", "HTML", "CSS", "React"]
+    },
+    "backend": {
+      "title": "Backend & APIs",
+      "description": "APIs, services, and integrations with clear domain boundaries, well-defined contracts, and attention to performance.",
+      "skills": ["Python", "PHP", "Go", "REST APIs"]
+    },
+    "devops": {
+      "title": "Cloud & DevOps",
+      "description": "Infrastructure, pipelines, observability, and automation to deliver software with predictability.",
+      "skills": ["AWS", "CI/CD", "Terraform", "Observability"]
+    },
+    "ariaLabel": "Technologies"
+  },
+  "cta": "Download CV",
+  "errors": {
+    "unableToLoad": "Unable to load content. Please refresh the page."
+  }
+}

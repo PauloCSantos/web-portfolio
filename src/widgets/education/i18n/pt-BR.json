@@ -1,0 +1,54 @@
+{
+  "title": "Formação Acadêmica",
+  "intro": "Uma trilha curta de leitura: base de engenharia, especialização em backend moderno e aprofundamento em software orientado por IA.",
+  "thesis": {
+    "label": "Leitura para líderes",
+    "text": "A formação sustenta decisões de engenharia que passam por arquitetura, backend, cloud, desempenho, integração e julgamento sobre produto."
+  },
+  "listLabel": "Lista de formações",
+  "proofLabel": "Evidências de rigor",
+  "meta": {
+    "degree": "Nível",
+    "institution": "Instituição",
+    "period": "Período",
+    "focus": "Foco"
+  },
+  "items": [
+    {
+      "id": "uemg-computer-engineering",
+      "degree": "Graduação",
+      "course": "Engenharia da Computação",
+      "institution": "Universidade do Estado de Minas Gerais (UEMG)",
+      "status": "2016 - 2021",
+      "emphasis": "Fundação de engenharia para raciocinar sobre sistemas, redes, software e restrições reais de execução.",
+      "proofPoints": [
+        "Base formal para discutir arquitetura, software e infraestrutura",
+        "Repertório técnico para conectar produto, código e infraestrutura"
+      ]
+    },
+    {
+      "id": "fctech-go-development",
+      "degree": "Pós-graduação",
+      "course": "Desenvolvimento com Go",
+      "institution": "Faculdade Full Cycle (FCTECH)",
+      "status": "2024 - 2024",
+      "emphasis": "Aprofundamento em uma stack pragmática de serviços, concorrência e performance para dialogar melhor com backend e plataforma.",
+      "proofPoints": [
+        "Leitura mais precisa de contratos entre aplicações, serviços e APIs",
+        "Sensibilidade para custo, latência e desenho de serviços"
+      ]
+    },
+    {
+      "id": "fctech-mba-software-ai",
+      "degree": "MBA",
+      "course": "Engenharia de Software com IA",
+      "institution": "Faculdade Full Cycle (FCTECH)",
+      "status": "2026 - 2027",
+      "emphasis": "Formação em andamento para tratar IA como parte do ciclo de engenharia: requisitos, validação, automação e governança técnica.",
+      "proofPoints": [
+        "Posicionamento atual sobre IA aplicada a software",
+        "Atenção a critérios de qualidade, risco e manutenção"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "hero": "Home",
+    "about": "About",
+    "stack": "Tech Stack",
+    "education": "Education",
+    "work": "Work",
+    "contact": "Contact"
+  },
+  "menu": {
+    "openSettings": "Open settings",
+    "closeSettings": "Close settings",
+    "settingsTitle": "Settings",
+    "theme": "Theme",
+    "language": "Language",
+    "toggleTheme": "Toggle theme",
+    "toggleLang": "Switch language",
+    "light": "Light",
+    "dark": "Dark",
+    "langPT": "PT",
+    "langEN": "EN",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuTitle": "Menu",
+    "skipToContent": "Skip to main content"
+  }
+}

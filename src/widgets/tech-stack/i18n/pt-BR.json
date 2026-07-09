@@ -1,0 +1,115 @@
+{
+  "title": "Tech Stack",
+  "description": "Repertório técnico organizado como radar de ferramentas, fundamentos e capacidades que acompanho para decidir melhor.",
+  "hint": "Role a página para navegar pelo radar técnico e acompanhar a progressão da stack.",
+  "eyebrow": "Radar técnico",
+  "introTitle": "A experiência mostra onde apliquei. Este mapa mostra o repertório que mantenho em movimento.",
+  "introBody": "Nem toda ferramenta tem o mesmo peso: algumas são base diária, outras entram para prototipar, integrar ou responder quando o contexto muda.",
+  "outroTitle": "Stack não é coleção de logos. É repertório para escolher com mais precisão.",
+  "outroBody": "O sinal forte está em conectar ferramentas, fundamentos e práticas atuais sem tratar novidade como resposta automática.",
+  "storySteps": [
+    "Abertura",
+    "Linguagens",
+    "Arquiteturas",
+    "DevOps",
+    "IA",
+    "Extras",
+    "Final"
+  ],
+  "storyContent": {
+    "opening": {
+      "eyebrow": "Radar de repertório",
+      "title": "O mapa separa uso real, fundamentos e tecnologias que acompanho de perto.",
+      "body": "As experiências contam onde eu já apliquei. Aqui o objetivo é mostrar alcance técnico, atualização e como conecto ferramentas sem fingir a mesma profundidade em tudo.",
+      "signal": "Repertório em contexto"
+    },
+    "languages": {
+      "eyebrow": "Uso com segurança",
+      "title": "Linguagens e runtimes que cobrem produto, serviço, automação e dados.",
+      "body": "Essa base sustenta o trabalho cotidiano: escrever interfaces, serviços, scripts, integrações e consultas com clareza sobre onde cada regra precisa viver.",
+      "signal": "Base de entrega"
+    },
+    "architectures": {
+      "eyebrow": "Fundamentos que atravessam stack",
+      "title": "Arquitetura organiza fronteiras, integração e mudança antes da escolha da ferramenta.",
+      "body": "Esses fundamentos ajudam a ler domínio, dividir responsabilidades, reduzir acoplamento e manter evolução possível quando o produto muda.",
+      "signal": "Fundamentos transferíveis"
+    },
+    "devops": {
+      "eyebrow": "Operação em contexto de produto",
+      "title": "Cloud, containers e pipelines tornam entrega uma capacidade repetível.",
+      "body": "Esse repertório entra quando o software precisa sair do ambiente local com ambiente, release, automação e execução menos frágeis.",
+      "signal": "Entrega operável"
+    },
+    "ai": {
+      "eyebrow": "Acompanho e aplico quando faz sentido",
+      "title": "IA entra como capacidade de produto, automação e contexto, não como adorno.",
+      "body": "LLMs, RAG, MCP e agentes ficam no radar porque já mudam fluxos de busca, orquestração e assistência. O critério continua sendo utilidade verificável.",
+      "signal": "IA com critério"
+    },
+    "extras": {
+      "eyebrow": "Refinamento de entrega",
+      "title": "Frameworks, tooling e qualidade fecham o ciclo entre DX e experiência final.",
+      "body": "Essa camada mantém a entrega mais rápida de validar, mais fácil de manter e mais consistente para quem desenvolve e para quem usa.",
+      "signal": "Refinamento prático"
+    },
+    "finale": {
+      "eyebrow": "Síntese final",
+      "title": "Este radar mostra alcance técnico sem transformar cada nome em promessa de especialidade.",
+      "body": "Algumas ferramentas são base de entrega; outras ampliam repertório para decidir, prototipar ou integrar melhor quando o problema pede.",
+      "signal": "Radar técnico curado"
+    }
+  },
+  "stage": {
+    "ariaLabel": "Visualização narrativa da stack com rolagem guiando a animação",
+    "labels": ["contexto", "decisão", "operação", "evolução"]
+  },
+  "storyProgress": {
+    "ariaLabel": "Progresso da narrativa",
+    "goToStep": "Ir para etapa {{step}}"
+  },
+  "highlights": {
+    "ariaLabel": "Destaques"
+  },
+  "categories": {
+    "languages": {
+      "title": "Linguagens",
+      "summary": "Uso com segurança para aplicações, serviços, automação, dados e integrações.",
+      "items": ["TypeScript", "React", "Node.js", "Python", "PHP", "SQL"]
+    },
+    "architectures": {
+      "title": "Arquiteturas",
+      "summary": "Fundamentos que atravessam stack, domínio, integração e responsabilidades.",
+      "items": [
+        "Bounded Contexts",
+        "Eventos",
+        "APIs",
+        "Baixo Acoplamento",
+        "Modularidade",
+        "Migrações"
+      ]
+    },
+    "devops": {
+      "title": "DevOps",
+      "summary": "Operação em contexto de produto com infra, pipelines e automação.",
+      "items": [
+        "Docker",
+        "Terraform",
+        "GitHub Actions",
+        "Azure DevOps",
+        "AWS Lambda",
+        "CI/CD"
+      ]
+    },
+    "ai": {
+      "title": "IA",
+      "summary": "Tecnologias que acompanho e aplico quando aumentam contexto ou reduzem atrito.",
+      "items": ["LLM", "RAG", "MCP", "Agentes de IA", "Embeddings"]
+    },
+    "extras": {
+      "title": "Extras",
+      "summary": "Refinamento de entrega entre DX, performance, validação e experiência final.",
+      "items": ["Vite", "GSAP", "i18n", "ESLint", "Performance", "Acessibilidade"]
+    }
+  }
+}

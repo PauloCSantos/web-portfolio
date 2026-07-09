@@ -1,0 +1,54 @@
+{
+  "title": "Education",
+  "intro": "A compact reading path: engineering fundamentals, modern backend specialization, and deeper software practice shaped by AI.",
+  "thesis": {
+    "label": "Signal for leaders",
+    "text": "This education supports engineering decisions across architecture, backend, cloud, performance, integration, and product judgment."
+  },
+  "listLabel": "Education list",
+  "proofLabel": "Rigor evidence",
+  "meta": {
+    "degree": "Degree",
+    "institution": "Institution",
+    "period": "Period",
+    "focus": "Focus"
+  },
+  "items": [
+    {
+      "id": "uemg-computer-engineering",
+      "degree": "Bachelor's Degree",
+      "course": "Computer Engineering",
+      "institution": "State University of Minas Gerais (UEMG)",
+      "status": "2016 - 2021",
+      "emphasis": "Engineering foundation for reasoning about systems, networks, software, and real execution constraints.",
+      "proofPoints": [
+        "Formal base for discussing architecture, software, and infrastructure",
+        "Technical range to connect product, code, and infrastructure"
+      ]
+    },
+    {
+      "id": "fctech-go-development",
+      "degree": "Postgraduate Program",
+      "course": "Go Development",
+      "institution": "Full Cycle College (FCTECH)",
+      "status": "2024 - 2024",
+      "emphasis": "Deeper practice in a pragmatic services stack, concurrency, and performance for stronger backend and platform dialogue.",
+      "proofPoints": [
+        "Sharper reading of contracts between applications, services, and APIs",
+        "Sensitivity to cost, latency, and service design"
+      ]
+    },
+    {
+      "id": "fctech-mba-software-ai",
+      "degree": "MBA",
+      "course": "Software Engineering with AI",
+      "institution": "Full Cycle College (FCTECH)",
+      "status": "2026 - 2027",
+      "emphasis": "Ongoing formation to treat AI as part of the engineering cycle: requirements, validation, automation, and technical governance.",
+      "proofPoints": [
+        "Current positioning on AI applied to software",
+        "Attention to quality criteria, risk, and maintainability"
+      ]
+    }
+  ]
+}

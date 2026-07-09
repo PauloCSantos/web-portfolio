@@ -1,0 +1,28 @@
+{
+  "positioning": "For conversations where engineering needs architecture, delivery, and product reading.",
+  "title": "Bring context.",
+  "description": "If the role needs someone who understands process, designs architecture, implements software, and connects application, backend, and cloud, this is the right conversation.",
+  "qualificationItems": [
+    {
+      "label": "Focus",
+      "description": "Software engineering, architecture, APIs, cloud, automation, performance, and systems that need to support decisions."
+    },
+    {
+      "label": "Reading",
+      "description": "I work best when there is room to understand tradeoffs, remove noise, and turn loose requirements into executable direction."
+    },
+    {
+      "label": "Pace",
+      "description": "I prefer direct conversations: real context, clear constraints, and next steps that respect the evaluator's time."
+    }
+  ],
+  "panelTitle": "Direct channels",
+  "panelDescription": "Use the channel that best fits technical fit, delivery history, or a specific opportunity.",
+  "ctaGroupLabel": "Contact actions",
+  "opensInNewTab": "opens in a new tab",
+  "linkedin": "LinkedIn",
+  "linkedinDescription": "Best for starting a conversation with professional context.",
+  "github": "GitHub",
+  "githubDescription": "Code, technical decisions, and execution signals.",
+  "resumeDescription": "For fast screening, download the resume in the active language."
+}

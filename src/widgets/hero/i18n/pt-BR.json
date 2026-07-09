@@ -1,0 +1,14 @@
+{
+  "name": "Paulo C Santos",
+  "position": "Engenharia de software para operações que precisam sair do improviso",
+  "value": "Leio processos, desenho arquitetura e entrego aplicações, APIs, integrações e automações que melhoram a forma como a operação trabalha.",
+  "micro": "Software aplicado a problemas reais, com atenção a arquitetura, cloud, performance e manutenção.",
+  "tags": ["Software", "Arquitetura", "Cloud"],
+  "proofs": [
+    "Transformo regra solta em fluxo implementável.",
+    "Conecto aplicação, serviço, infraestrutura e operação.",
+    "Entrego com critério técnico acima do fechamento de tickets."
+  ],
+  "proofLabel": "Sinais para decisão",
+  "signalLabel": "Posicionamento"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Paulo C Santos",
+  "position": "Software engineering for operations that need to move past improvisation",
+  "value": "I read processes, design architecture, and ship applications, APIs, integrations, and automations that improve how the operation works.",
+  "micro": "Software applied to real problems, with attention to architecture, cloud, performance, and maintenance.",
+  "tags": ["Software", "Architecture", "Cloud"],
+  "proofs": [
+    "I turn loose rules into implementable flows.",
+    "I connect application, service, infrastructure, and operations.",
+    "I ship with technical judgment beyond closed-ticket output."
+  ],
+  "proofLabel": "Decision signals",
+  "signalLabel": "Positioning"
+}

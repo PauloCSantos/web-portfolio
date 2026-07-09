@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=JetBrains+Mono:wght@500&family=Lexend:wght@300;400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: oklch(0.965 0.009 238);
+  --color-fg: oklch(0.17 0.027 248);
+  --color-muted: oklch(0.43 0.025 248);
+
+  --color-card: oklch(0.925 0.012 236);
+  --color-border: oklch(0.78 0.018 236);
+
+  --color-primary: oklch(0.59 0.16 38);
+  --color-accent: oklch(0.62 0.13 194);
+
+  --radius-md: 1rem;
+
+  --tracking-xwide: 0.2em;
+
+  --text-2xs: 10px;
+  --text-xxs: 11px;
+
+  --shadow-prettier: 0 6px 8px -7px oklch(0.16 0.02 248 / 0.45);
+  --shadow-card: none;
+  --shadow-card-hover: 0 6px 8px -7px oklch(0.16 0.02 248 / 0.38);
+  --shadow-menu: 0 6px 8px -7px oklch(0.16 0.02 248 / 0.5);
+  --shadow-menu-panel: 0 6px 8px -7px oklch(0.16 0.02 248 / 0.55);
+  --shadow-switch: 0 8px 20px -12px rgba(0, 0, 0, 0.8);
+  --shadow-resume: 0 6px 8px -7px oklch(0.59 0.16 38 / 0.58);
+  --shadow-resume-hover: 0 7px 8px -7px oklch(0.59 0.16 38 / 0.68);
+  --shadow-stack: 0 6px 8px -7px oklch(0.16 0.02 248 / 0.48);
+  --shadow-stack-chip: 0 6px 8px -7px oklch(0.59 0.16 38 / 0.18);
+
+  --z-60: 60;
+  --z-70: 70;
+  --z-100: 100;
+  --z-200: 200;
+}
+
+html.dark {
+  --color-bg: oklch(0.13 0.025 248);
+  --color-fg: oklch(0.9 0.018 72);
+  --color-muted: oklch(0.72 0.025 72);
+
+  --color-card: oklch(0.19 0.027 248);
+  --color-border: oklch(0.34 0.03 248);
+
+  --color-primary: oklch(0.68 0.15 42);
+  --color-accent: oklch(0.73 0.12 194);
+}
+
+@layer base {
+  :root {
+    --font-body: "Lexend", "Helvetica Neue", Arial, sans-serif;
+    --font-display: "Fraunces", "Times New Roman", serif;
+    --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+    --layout-gutter: clamp(1rem, 3vw, 4rem);
+    --layout-container: clamp(20rem, 91vw, 112rem);
+    --layout-readable: clamp(19rem, 68vw, 62rem);
+    --layout-narrow: clamp(18rem, 58vw, 44rem);
+    --layout-card-min: min(100%, 18rem);
+    --layout-card-comfy: min(100%, 22rem);
+    --header-block-size: 4rem;
+    --section-padding-block: clamp(3.5rem, 7vw, 9.5rem);
+    --section-stack-gap: clamp(2rem, 4.5vw, 5rem);
+    --grid-gap: clamp(1rem, 2vw, 2rem);
+    --card-padding: clamp(1rem, 2vw, 2rem);
+    --card-radius: clamp(0.9rem, 1.2vw, 1.25rem);
+    --font-display-xl: clamp(2.6rem, 5.2vw, 8rem);
+    --font-display-lg: clamp(2.25rem, 4.2vw, 6rem);
+    --font-section-title: clamp(2rem, 2.4vw, 4.35rem);
+    --font-card-title: clamp(1rem, 0.55vw + 0.92rem, 1.35rem);
+    --font-body-fluid: clamp(0.98rem, 0.32vw + 0.92rem, 1.24rem);
+    --font-body-small: clamp(0.88rem, 0.24vw + 0.82rem, 1rem);
+    --font-eyebrow: clamp(0.7rem, 0.2vw + 0.66rem, 0.9rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    letter-spacing: 0;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    min-width: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-primary) 30%, white);
+    color: var(--color-fg);
+  }
+}
+
+@layer utilities {
+  .responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--layout-card-min), 1fr));
+    gap: var(--grid-gap);
+  }
+
+  .responsive-grid-comfy {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--layout-card-comfy), 1fr));
+    gap: var(--grid-gap);
+  }
+
+  .responsive-flow {
+    display: grid;
+    gap: var(--section-stack-gap);
+  }
+
+  .text-readable {
+    max-inline-size: var(--layout-readable);
+  }
+}
+
+@layer base {
+  @media (min-width: 2560px) {
+    :root {
+      --layout-gutter: clamp(4rem, 5vw, 8rem);
+      --layout-container: min(82vw, 136rem);
+      --section-padding-block: clamp(9rem, 6vw, 14rem);
+      --section-stack-gap: clamp(5rem, 3vw, 7rem);
+      --grid-gap: clamp(2rem, 1.4vw, 3.5rem);
+    }
+  }
+}
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  background: var(--color-bg);
+}
+
+.full-viewport {
+  min-height: 100svh;
+}
+
+@media (min-width: 768px) {
+  .full-viewport {
+    min-height: 100dvh;
+  }
+}
+
+.app-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0 58%,
+      color-mix(in srgb, var(--color-primary) 8%, transparent) 58% 72%,
+      transparent 72%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-card) 42%, transparent),
+      transparent 34%
+    );
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.education-neon-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.education-neon-shell::before,
+.education-neon-shell::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.education-neon-shell::before {
+  z-index: 0;
+  padding: 1px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    color-mix(in srgb, var(--color-primary) 88%, white 12%) 70deg,
+    transparent 140deg,
+    color-mix(in srgb, var(--color-primary) 75%, white 25%) 220deg,
+    transparent 300deg,
+    color-mix(in srgb, var(--color-primary) 82%, white 18%) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: education-neon-spin 3.6s linear infinite;
+}
+
+.education-neon-shell::after {
+  z-index: -1;
+  inset: -8px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-primary) 48%, transparent) 0%,
+    transparent 72%
+  );
+  filter: blur(8px);
+  opacity: 0.5;
+  animation: education-neon-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes education-neon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes education-neon-pulse {
+  0%,
+  100% {
+    opacity: 0.34;
+  }
+
+  50% {
+    opacity: 0.56;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .education-neon-shell::before,
+  .education-neon-shell::after {
+    animation: none;
+  }
+}

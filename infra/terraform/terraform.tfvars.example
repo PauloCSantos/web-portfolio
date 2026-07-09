@@ -1,0 +1,15 @@
+project_name = "web-portfolio"
+environment  = "prod"
+aws_region   = "us-east-1"
+
+# Opcional: se vazio, usa <project_name>-<environment>-site
+site_bucket_name = "my-portfolio-prod-site"
+
+# Dominio/certificado (opcional)
+enable_custom_domain   = true
+domain_name            = "example.com"
+enable_www_redirect    = true
+# Se vazio e enable_custom_domain=true, o Terraform cria uma public hosted zone.
+hosted_zone_id         = ""
+create_acm_certificate = false
+acm_certificate_arn    = "arn:aws:acm:us-east-1:123456789012:certificate/00000000-0000-0000-0000-000000000000"

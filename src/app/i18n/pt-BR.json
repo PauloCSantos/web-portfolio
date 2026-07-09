@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "hero": "Início",
+    "about": "Sobre",
+    "stack": "Tech Stack",
+    "education": "Educação",
+    "work": "Experiência",
+    "contact": "Contato"
+  },
+  "menu": {
+    "openSettings": "Abrir configurações",
+    "closeSettings": "Fechar configurações",
+    "settingsTitle": "Configurações",
+    "theme": "Tema",
+    "language": "Idioma",
+    "toggleTheme": "Alternar tema",
+    "toggleLang": "Alternar idioma",
+    "light": "Claro",
+    "dark": "Escuro",
+    "langPT": "PT",
+    "langEN": "EN",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "menuTitle": "Menu",
+    "skipToContent": "Pular para o conteúdo principal"
+  }
+}
